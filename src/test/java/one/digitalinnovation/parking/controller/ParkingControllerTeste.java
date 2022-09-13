@@ -13,7 +13,7 @@ import io.restassured.RestAssured;
 import one.digitalinnovation.parking.dto.ParkingCreateDTO;
 
 @SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT)
-public class ParkingControllerIT {
+public class ParkingControllerTeste extends AbstractContainerBase {
 	
 	@LocalServerPort
 	private int randomPort;
@@ -26,12 +26,13 @@ public class ParkingControllerIT {
 	
 	@Test
 	void whenFindAllThenCheckResult() {
+
 		RestAssured.given()
 			.when()
 			.get("/parking")
 			.then()
 			.statusCode(200)
-			.body("license[1]", Matchers.equalTo("DMS 1111")); //verificar o que esperar da api num teste automatizado
+			.body("license[1]", Matchers.equalTo("DMS 1111")); //verificar o que esperar da api num teste automatizado 
 		
 			//.statusCode(200).body	
 			//.extract().response().body().prettyPrint(); para ver se o teste esta indo na api

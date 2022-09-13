@@ -1,9 +1,22 @@
 package one.digitalinnovation.parking.model;
 
+import java.io.Serializable;
 import java.time.LocalDateTime;
 
-public class Parking {
+import javax.persistence.Entity;
+import javax.persistence.Id;
+import javax.persistence.Table;
+
+@Entity
+@Table(name = "parking")
+public class Parking implements Serializable {
 	
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+	
+	@Id
 	private String id;
 	private String license;
 	private String state;
