@@ -27,15 +27,12 @@ public class ParkingControllerTeste extends AbstractContainerBase {
 	@Test
 	void whenFindAllThenCheckResult() {
 
-		RestAssured.given()
-			.when()
-			.get("/parking")
-			.then()
-			.statusCode(200)
-			.body("license[1]", Matchers.equalTo("DMS 1111")); //verificar o que esperar da api num teste automatizado 
-		
-			//.statusCode(200).body	
-			//.extract().response().body().prettyPrint(); para ver se o teste esta indo na api
+		 RestAssured.given()
+         .auth().basic("user", "12345")
+         .when()
+         .get("/parking")
+         .then()
+         .statusCode(HttpStatus.OK.value());
 	}
 
 	
